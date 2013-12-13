@@ -1,0 +1,31 @@
+{
+  "name": "fakestk",
+  "version": "0.0.1",
+  "description": "CUI Adobe ExtendScript runner. Accept script file or stdin. currently  osx only",
+  "main": "index.js",
+  "bin": "cmd.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "nbqx",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nbqx/fakestk.git"
+  },
+  "homepage": "https://github.com/nbqx/fakestk",
+  "keywords": [
+    "adobe",
+    "extendscript",
+    "cui"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "dependencies": {
+    "mustache": "~0.8.0",
+    "temporary": "0.0.7",
+    "minimist": "0.0.5"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "indesign": {
+    "name": "InDesign",
+    "versions": {
+      "5.0": "CS3",
+      "6.0": "CS4",
+      "7.0": "CS5",
+      "7.5": "CS5.5",
+      "8.0": "CS6"
+    }
+  },
+  "illustrator": {
+    "name": "Illustrator",
+    "versions": {
+      "13.0": "CS3",
+      "14.0": "CS4",
+      "15.0": "CS5",
+      "15.1": "CS5.1",
+      "16.0": "CS6"
+    }
+  },
+  "photoshop": {
+    "name": "Photoshop",
+    "versions": {
+      "10.0": "CS3",
+      "11.0": "CS4",
+      "12.0": "CS5",
+      "12.1": "CS5.1",
+      "13.0": "CS6"
+    }
+  }
+}

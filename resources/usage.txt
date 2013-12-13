@@ -1,0 +1,5 @@
+usage: fakestk [FILE | STDIN]
+
+  cui Adobe ExtendScript runner. Accept script file or stdin. currently osx only.
+
+  
