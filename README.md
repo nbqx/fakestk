@@ -17,7 +17,7 @@ then
 
 or
 
-    $ less /path/to/script.jsx
+    $ less /path/to/script.jsx | fakestk
     $ echo "#target indesign-7.0;alert('hello!');" | fakestk
 
 or
