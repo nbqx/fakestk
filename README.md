@@ -20,6 +20,11 @@ or
     $ less /path/to/script.jsx | fakestk
     $ echo "#target indesign-7.0;alert('hello!');" | fakestk
 
+or with [jsx-manifest](https://npmjs.org/package/jsx-manifest)
+
+    $ npm install -g jsx-manifest
+    $ jsx_manifest -b binding.json manifest.js | fakestk
+
 or
 
     $ npm install fakestk
