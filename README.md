@@ -45,7 +45,7 @@ fakestk.run(script,function(err,result){
 });
  
 // without callback
-var exec = fakestk.runSync(script);
+var exec = fakestk.run(script);
 exec.on('error',function(err){ console.log(err) });
 exec.on('data', function(data){ console.log(data) });
 ```

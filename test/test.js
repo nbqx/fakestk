@@ -83,7 +83,7 @@ describe('executor test',function(){
 
 var fakestk = require(__dirname+'/../lib');
 describe('command line action',function(){
-  it('run',function(done){
+  it('with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
     fakestk.run(jsx,function(err,r){
       r.should.eql("ok\r");
@@ -91,9 +91,9 @@ describe('command line action',function(){
     });
   });
 
-  it('runSync',function(done){
+  it('without callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
-    var exe = fakestk.runSync(jsx);
+    var exe = fakestk.run(jsx);
     exe.on('data',function(d){
       d.should.eql("ok\r");
       done();
