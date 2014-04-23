@@ -41,7 +41,7 @@ describe('executor test',function(){
   it('runs indesign cs5 with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
     executor(jsx,function(e,r){
-      r.should.eql("ok\r");
+      r.should.eql("ok\r\n");
       done();
     });
   });
@@ -50,7 +50,7 @@ describe('executor test',function(){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
     var exe = executor(jsx);
     exe.on('data',function(d){
-      d.should.eql("ok\r");
+      d.should.eql("ok\r\n");
       done();
     });
   });
@@ -58,7 +58,7 @@ describe('executor test',function(){
   it('runs photoshop cs5 with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ps_cs5.jsx');
     executor(jsx,function(e,r){
-      r.should.eql("ok\r");
+      r.should.eql("ok\r\n");
       done();
     });
   });
@@ -66,7 +66,7 @@ describe('executor test',function(){
   it('runs illustrator cs5 with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ill_cs5.jsx');
     executor(jsx,function(e,r){
-      r.should.eql("ok\r");
+      r.should.eql("ok\r\n");
       done();
     });
   });
@@ -75,7 +75,7 @@ describe('executor test',function(){
     var cont = ["#target InDesign-7.0","#include \""+__dirname+"/fixtures/inc.jsx\"","inc();"].join("\n");
     var exe = executor(cont);
     exe.on('data',function(d){
-      d.should.eql("this is inc\r");
+      d.should.eql("this is inc\r\n");
       done();
     });
   });
@@ -86,7 +86,7 @@ describe('command line action',function(){
   it('with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
     fakestk.run(jsx,function(err,r){
-      r.should.eql("ok\r");
+      r.should.eql("ok\r\n");
       done();
     });
   });
@@ -95,7 +95,7 @@ describe('command line action',function(){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
     var exe = fakestk.run(jsx);
     exe.on('data',function(d){
-      d.should.eql("ok\r");
+      d.should.eql("ok\r\n");
       done();
     });
   });
