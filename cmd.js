@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 var fakestk = require('./index');
+var path = require('path');
 
 if(process.stdin.isTTY){
   var argv = require('minimist')(process.argv.slice(2),{}),
@@ -10,7 +11,7 @@ if(process.stdin.isTTY){
   }
   
   if(argv._.length!==0){
-    var script = fs.readFileSync(argv._[0]).toString();
+    var script = path.resolve(argv._[0]);
     fakestk.run(script,function(err,result){
       if(err) return console.log(err.toString());
       if(result!==''){
