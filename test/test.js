@@ -12,6 +12,14 @@ describe('detecotor test',function(){
     done();
   });
 
+  it('Adobe InDesign CC',function(done){
+    var v = ['#target indesign-9.2','alert("ok");'].join("\n");
+    detector(v).should.have.property('name','InDesign');
+    detector(v).should.have.property('version','9.2');
+    detector(v).should.have.property('cs_version','CC');
+    done();
+  });
+
   it('Adobe Illustrator CS6',function(done){
     var v = ['#target "illustrator 16.0"','alert("ok");'].join("\n");
     detector(v).should.have.property('name','Illustrator');
@@ -48,6 +56,23 @@ describe('executor test',function(){
 
   it('runs indesign cs5 without callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
+    var exe = executor(jsx);
+    exe.on('data',function(d){
+      d.should.eql("ok\r\n");
+      done();
+    });
+  });
+
+  it('runs indesign cc with callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc.jsx');
+    executor(jsx,function(e,r){
+      r.should.eql("ok\r\n");
+      done();
+    });
+  });
+
+  it('runs indesign cc without callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc.jsx');
     var exe = executor(jsx);
     exe.on('data',function(d){
       d.should.eql("ok\r\n");
