@@ -18,7 +18,7 @@ then
 or
 
     $ less /path/to/script.jsx | fakestk
-    $ echo "#target indesign-7.0;alert('hello!');" | fakestk
+    $ echo "#target indesign-7.0\nalert('hello!');" | fakestk
 
 or with [jsx-manifest](https://npmjs.org/package/jsx-manifest)
 
