@@ -124,4 +124,21 @@ describe('command line action',function(){
       done();
     });
   });
+
+  it('with callback +BOM',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5withbom.jsx');
+    fakestk.run(jsx,function(err,r){
+      r.should.eql("with BOM");
+      done();
+    });
+  });
+
+  it('without callback +BOM',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5withbom.jsx');
+    var exe = fakestk.run(jsx);
+    exe.on('data',function(d){
+      d.should.eql("with BOM");
+      done();
+    });
+  });
 });
