@@ -1,3 +1,3 @@
-#target 'photoshop 12.0'
+#target 'photoshop-12'
 
 $.writeln('ok');
