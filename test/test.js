@@ -13,25 +13,25 @@ describe('detecotor test',function(){
   });
 
   it('Adobe InDesign CC',function(done){
-    var v = ['#target indesign-9.2','alert("ok");'].join("\n");
+    var v = ['#target indesign-9','alert("ok");'].join("\n");
     detector(v).should.have.property('name','InDesign');
-    detector(v).should.have.property('version','9.2');
+    detector(v).should.have.property('version','9');
     detector(v).should.have.property('cs_version','CC');
     done();
   });
 
   it('Adobe Illustrator CS6',function(done){
-    var v = ['#target "illustrator 16.0"','alert("ok");'].join("\n");
+    var v = ['#target "illustrator 16"','alert("ok");'].join("\n");
     detector(v).should.have.property('name','Illustrator');
-    detector(v).should.have.property('version','16.0');
+    detector(v).should.have.property('version','16');
     detector(v).should.have.property('cs_version','CS6');
     done();
   });
 
   it('Adobe photoshop CS6',function(done){
-    var v = ["#target 'Photoshop-13.0'",'alert("ok");'].join("\n");
+    var v = ["#target 'Photoshop-60'",'alert("ok");'].join("\n");
     detector(v).should.have.property('name','Photoshop');
-    detector(v).should.have.property('version','13.0');
+    detector(v).should.have.property('version','60');
     detector(v).should.have.property('cs_version','CS6');
     done();
   });
@@ -88,6 +88,14 @@ describe('executor test',function(){
     });
   });
 
+  it('runs photoshop cc with callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ps_cc.jsx');
+    executor(jsx,function(e,r){
+      r.should.eql("ok\r\n");
+      done();
+    });
+  });
+
   it('runs illustrator cs5 with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ill_cs5.jsx');
     executor(jsx,function(e,r){
@@ -96,8 +104,16 @@ describe('executor test',function(){
     });
   });
 
+  it('runs illustrator cc with callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ill_cc.jsx');
+    executor(jsx,function(e,r){
+      r.should.eql("ok\r\n");
+      done();
+    });
+  });
+
   it('runs indesign cs5 without callback and contains #include in jsx',function(done){
-    var cont = ["#target InDesign-7.0","#include \""+__dirname+"/fixtures/inc.jsx\"","inc();"].join("\n");
+    var cont = ["#target InDesign-7","#include \""+__dirname+"/fixtures/inc.jsx\"","inc();"].join("\n");
     var exe = executor(cont);
     exe.on('data',function(d){
       d.should.eql("this is inc\r\n");

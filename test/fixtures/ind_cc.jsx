@@ -1,3 +1,3 @@
-#target InDesign-9.2
+#target InDesign-9
 
 $.writeln('ok');
