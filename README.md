@@ -2,7 +2,12 @@
 
 Fakestk(Fake ESTK) Adobe ExtendScript(JSX) simple command runner.
 
-* auto detection CS application name and version
+* auto detection of CS application name
+
+    > version number needs to be specified in target  
+    > `#target indesign-7.0`  
+    > see [versions.json](./resources/versions.json)  
+
 * accept stdin
 * from $.write and $.writeln output to stdout
 * currently OSX only
