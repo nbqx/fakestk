@@ -28,6 +28,14 @@ describe('detecotor test',function(){
     done();
   });
 
+  it('Adobe InDesign CC 2018',function(done){
+    var v = ['#target indesign-13','alert("ok");'].join("\n");
+    detector(v).should.have.property('name','InDesign');
+    detector(v).should.have.property('version','13');
+    detector(v).should.have.property('cs_version','CC 2018');
+    done();
+  });
+
   it('Adobe Illustrator CS6',function(done){
     var v = ['#target "illustrator 16.0"','alert("ok");'].join("\n");
     detector(v).should.have.property('name','Illustrator');
@@ -105,6 +113,23 @@ describe('executor test',function(){
     });
   });
 
+  it('runs indesign cc 2018 with callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc2018.jsx');
+    executor(jsx,function(e,r){
+      r.should.eql("ok\r\n");
+      done();
+    });
+  });
+
+  it('runs indesign cc 2018 without callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc2018.jsx');
+    var exe = executor(jsx);
+    exe.on('data',function(d){
+      d.should.eql("ok\r\n");
+      done();
+    });
+  });
+
   it('runs photoshop cs5 with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ps_cs5.jsx');
     executor(jsx,function(e,r){
@@ -133,7 +158,7 @@ describe('executor test',function(){
 
 var fakestk = require(__dirname+'/../lib');
 describe('command line action',function(){
-  it('with callback',function(done){
+  it('runs indesign cs6 with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs6.jsx');
     fakestk.run(jsx,function(err,r){
       r.should.eql("ok\r\n");
@@ -141,7 +166,7 @@ describe('command line action',function(){
     });
   });
 
-  it('without callback',function(done){
+  it('runs indesign cs6 without callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs6.jsx');
     var exe = fakestk.run(jsx);
     exe.on('data',function(d){
@@ -150,7 +175,7 @@ describe('command line action',function(){
     });
   });
 
-  it('with callback +BOM',function(done){
+  it('runs indesign cs6 with callback +BOM',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs6withbom.jsx');
     fakestk.run(jsx,function(err,r){
       r.should.eql("with BOM");
@@ -158,8 +183,42 @@ describe('command line action',function(){
     });
   });
 
-  it('without callback +BOM',function(done){
+  it('runs indesign cs6 without callback +BOM',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs6withbom.jsx');
+    var exe = fakestk.run(jsx);
+    exe.on('data',function(d){
+      d.should.eql("with BOM");
+      done();
+    });
+  });
+  
+  it('runs indesign cc 2018 with callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc2018.jsx');
+    fakestk.run(jsx,function(err,r){
+      r.should.eql("ok\r\n");
+      done();
+    });
+  });
+
+  it('runs indesign cc 2018 without callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc2018.jsx');
+    var exe = fakestk.run(jsx);
+    exe.on('data',function(d){
+      d.should.eql("ok\r\n");
+      done();
+    });
+  });
+
+  it('runs indesign cc 2018 with callback +BOM',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc2018withbom.jsx');
+    fakestk.run(jsx,function(err,r){
+      r.should.eql("with BOM");
+      done();
+    });
+  });
+
+  it('runs indesign cc 2018 without callback +BOM',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc2018withbom.jsx');
     var exe = fakestk.run(jsx);
     exe.on('data',function(d){
       d.should.eql("with BOM");
