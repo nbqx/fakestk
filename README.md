@@ -1,6 +1,6 @@
 ## Fakestk
 
-Fakestk(Fake ESTK) Adobe ExtendScript(JSX) simple command runner.
+Fakestk (Fake ESTK) Adobe ExtendScript(JSX) simple command runner.
 
 * auto detection of CS application name
 
@@ -19,6 +19,10 @@ Fakestk(Fake ESTK) Adobe ExtendScript(JSX) simple command runner.
 then
 
     $ fakestk /path/to/script.jsx
+
+or
+
+    $ fakestk /path/to/script.jsx -t indesign-13
 
 or
 

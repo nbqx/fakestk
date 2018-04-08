@@ -1,7 +1,7 @@
 {
   "name": "fakestk",
-  "version": "0.2.4",
-  "description": "CUI Adobe ExtendScript runner. Accept script file or stdin. currently  osx only",
+  "version": "0.3.4",
+  "description": "CUI Adobe ExtendScript runner. Accept script file or stdin. currently osx only",
   "main": "index.js",
   "bin": "cmd.js",
   "scripts": {
@@ -16,7 +16,8 @@
   "keywords": [
     "adobe",
     "extendscript",
-    "cui"
+    "cui",
+    "cli"
   ],
   "license": "MIT",
   "devDependencies": {
