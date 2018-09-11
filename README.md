@@ -1,18 +1,16 @@
-## Fakestk
+# Fakestk
 
 Fakestk (Fake ESTK) Adobe ExtendScript(JSX) simple command runner.
 
 * auto detection of CS application name
 
-    > version number needs to be specified in target  
-    > `#target indesign-7.0`  
-    > see [versions.json](./resources/versions.json)  
+> Version can be specified in target. `#target indesign-7.0` and `@target InDesign CC-2018` both work. When no version is specified (`#target indesign`), Fakestk will target the first running version it can find. Make sure your target is running! See [versions.json](./resources/versions.json)
 
 * accept stdin
 * from $.write and $.writeln output to stdout
 * currently OSX only
 
-### Usage
+## Usage
 
     $ npm install -g fakestk
 
