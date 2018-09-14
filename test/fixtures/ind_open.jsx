@@ -1,0 +1,3 @@
+//@target InDesign
+
+$.writeln('ok');

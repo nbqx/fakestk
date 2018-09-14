@@ -2,6 +2,7 @@
   "indesign": {
     "name": "InDesign",
     "versions": {
+      "Open": "",
       "CS3": "CS3",
       "5.0": "CS3",
       "5": "CS3",
@@ -38,6 +39,7 @@
   "illustrator": {
     "name": "Illustrator",
     "versions": {
+      "Open": "",
       "CS3": "CS3",
       "13.0": "CS3",
       "13": "CS3",
@@ -86,6 +88,7 @@
   "photoshop": {
     "name": "Photoshop",
     "versions": {
+      "Open": "",
       "CS3": "CS3",
       "10.0": "CS3",
       "10": "CS3",

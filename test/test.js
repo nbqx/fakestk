@@ -2,7 +2,15 @@ var fs = require('fs'),
     should = require('should');
 
 var detector = require(__dirname+'/../lib/detector');
-describe('detecotor test',function(){
+describe('detector test',function(){
+
+  it('Adobe InDesign Running',function(done){
+    var v = ['#target indesign','alert("ok");'].join("\n");
+    detector(v).should.have.property('name','InDesign');
+    detector(v).should.have.property('version','Open');
+    detector(v).should.have.property('cs_version','');
+    done();
+  });
 
   it('Adobe InDesign CS5',function(done){
     var v = ['#target indesign-7.0','alert("ok");'].join("\n");
@@ -182,7 +190,7 @@ describe('executor test',function(){
     });
   });
   
-  it('runs indesign cc 2018 with indesign cs5 target override',function(done){
+  it('runs indesign cc 2018 on target override with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
     executor(jsx,"InDesign-13",function(e,r){
       r.should.eql("ok\r\n");
@@ -311,4 +319,22 @@ describe('command line action',function(){
       done();
     });
   });
+
+  it('runs open indesign application with callback +BOM',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc2018withbom.jsx');
+    fakestk.run(jsx,function(err,r){
+      r.should.eql("with BOM");
+      done();
+    });
+  });
+
+  it('runs open indesign application without callback +BOM',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_openwithbom.jsx');
+    var exe = fakestk.run(jsx);
+    exe.on('data',function(d){
+      d.should.eql("with BOM");
+      done();
+    });
+  });
+
 });
