@@ -52,6 +52,14 @@ describe('detector test',function(){
     done();
   });
 
+  it('Adobe InDesign 2020',function(done){
+    var v = ['#target indesign-15','alert("ok");'].join("\n");
+    detector(v).should.have.property('name','InDesign');
+    detector(v).should.have.property('version','15');
+    detector(v).should.have.property('cs_version','2020');
+    done();
+  });
+
   it('Adobe Illustrator CS6',function(done){
     var v = ['#target "illustrator 16.0"','alert("ok");'].join("\n");
     detector(v).should.have.property('name','Illustrator');
@@ -193,6 +201,14 @@ describe('executor test',function(){
   it('runs indesign cc 2018 on target override with callback',function(done){
     var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cs5.jsx');
     executor(jsx,"InDesign-13",function(e,r){
+      r.should.eql("ok\r\n");
+      done();
+    });
+  });
+
+  it('runs indesign cc 2020 with callback',function(done){
+    var jsx = fs.readFileSync(__dirname+'/fixtures/ind_cc2020.jsx');
+    executor(jsx,function(e,r){
       r.should.eql("ok\r\n");
       done();
     });
