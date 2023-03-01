@@ -27,7 +27,7 @@
   "dependencies": {
     "mustache": "~2.3.0",
     "temporary": "0.0.8",
-    "minimist": "0.0.5",
+    "minimist": "0.2.4",
     "moment": "^2.6.0"
   }
 }
